@@ -14,7 +14,12 @@ with st.sidebar:                        # 下面的代码都会显示在左侧�
     st.header("配置")
     
     # API Key 输入框（type="password" 会隐藏输入，防止密码泄露）
-    api_key = st.text_input("API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
+    # 先从环境变量里偷偷读取，读不到就提示用户手动输入
+api_key_env = os.getenv("OPENAI_API_KEY", "")
+if api_key_env:
+    api_key = api_key_env  # 云端环境有配置，直接用，但不在界面上显示
+else:
+    api_key = st.text_input("API Key", type="password", value="")  # 没有配置才显示输入框
     
     # 请求地址输入框
     base_url = st.text_input(
