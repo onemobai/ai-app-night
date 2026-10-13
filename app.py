@@ -7,6 +7,7 @@ import db                               # 我们自己写的档案管理员，�
 # --- 第 2 部分：网页基本设置 ---
 st.set_page_config(page_title="AI 聊天助手", page_icon="🤖")  # 设置浏览器标签页标题
 st.title("🤖 我的第一个 AI 应用")                             # 网页最上面的大标题
+db.init_db() 
 
 # --- 第 3 部分：侧边栏配置区 ---
 with st.sidebar:                        # 下面的代码都会显示在左侧侧边栏里
